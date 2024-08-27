@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>여행 추억 공유</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav {
+            margin: 10px;
+            text-align: center;
+        }
+        nav a {
+            margin: 0 15px;
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        .hero {
+            background-image: url('travel.jpg');
+            background-size: cover;
+            padding: 100px 20px;
+            text-align: center;
+            color: white;
+        }
+        .section {
+            padding: 20px;
+            text-align: center;
+        }
+        .section img {
+            width: 100%;
+            max-width: 300px;
+        }
+        .comment-box, .gallery {
+            margin: 20px 0;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>여행 추억 공유</h1>
+        <nav>
+            <a href="#destinations">여행지 추천</a>
+            <a href="#tips">여행 팁</a>
+            <a href="#forum">포럼</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h2>당신의 여행 이야기를 공유하세요!</h2>
+    </div>
+
+    <div class="section" id="destinations">
+        <h2>여행지 추천</h2>
+        <img src="destination.jpg" alt="여행지 사진">
+        <p>여기서 다양한 여행지를 탐험하세요.</p>
+    </div>
+
+    <div class="section" id="tips">
+        <h2>여행 팁</h2>
+        <ul>
+            <li>여행 가방 꾸리는 법</li>
+            <li>저렴한 항공권 찾는 법</li>
+        </ul>
+    </div>
+
+    <div class="section" id="forum">
+        <h2>포럼</h2>
+        <div class="comment-box">
+            <textarea id="commentInput" placeholder="여행 경험을 공유하세요..." rows="4" cols="50"></textarea><br>
+            <button onclick="addComment()">댓글 남기기</button>
+        </div>
+        <div id="comments">
+            <!-- 댓글이 여기에 추가됩니다. -->
+        </div>
+    </div>
+
+    <div class="section gallery">
+        <h2>여행 갤러리</h2>
+        <input type="file" id="imageUpload" accept="image/*" onchange="displayImage(event)">
+        <div id="galleryDisplay">
+            <!-- 업로드된 이미지가 여기에 표시됩니다. -->
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 여행 추억 공유. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function addComment() {
+            const commentInput = document.getElementById('commentInput');
+            const commentsDiv = document.getElementById('comments');
+
+            if (commentInput.value) {
+                const newComment = document.createElement('p');
+                newComment.textContent = commentInput.value;
+                commentsDiv.appendChild(newComment);
+                commentInput.value = '';
+            }
+        }
+
+        function displayImage(event) {
+            const gallery = document.getElementById('galleryDisplay');
+            const img = document.createElement('img');
+            img.src = URL.createObjectURL(event.target.files[0]);
+            img.width = 200; // 이미지 너비 설정
+            gallery.appendChild(img);
+        }
+    </script>
+</body>
+</html>
